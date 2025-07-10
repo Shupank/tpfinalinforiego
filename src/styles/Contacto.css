@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to right, #a8edea, #fed6e3);
+  margin: 0;
+  padding: 0;
+}
+
+/* Contacto.css */
+
+.form-wrapper {
+  max-width: 480px;
+  margin: 30px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input,
+select,
+textarea {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.botones {
+  display: flex;
+  gap: 12px; /* espacio entre botones */
+  margin-top: 10px;
+}
+
+.botones button {
+  flex: 1; /* que los botones tengan igual ancho */
+  padding: 12px 0;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+.botones button[type="submit"] {
+  background-color: #4caf50;
+}
+
+.botones button[type="submit"]:hover {
+  background-color: #43a047;
+}
+
+.botones button[type="button"] {
+  background-color: #bf8d8a;
+}
+
+.botones button[type="button"]:hover {
+  background-color: #d32f2f;
+}

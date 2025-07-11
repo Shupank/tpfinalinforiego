@@ -2,18 +2,14 @@ import React from "react";
 
 import "../styles/Novedades.css";
 
-import novedadesImg from "../assets/novedades.jpg"; // <--- ¡IMPORTA LA IMAGEN AQUÍ!
+import novedadesImg from "../assets/novedades.jpg";
 
 function Novedades() {
   return (
     <div className="page-container">
       <main className="content">
         <section className="noticia-principal">
-          <img
-            src={novedadesImg} // <--- ¡USA LA VARIABLE IMPORTADA AQUÍ!
-            alt="noticia"
-            className="imagen-noticia"
-          />
+          <img src={novedadesImg} alt="noticia" className="imagen-noticia" />
           <div className="contenido-noticia">
             <h1>
               “Un milagro” en las zonas áridas de Catamarca: en Santa María, el
@@ -34,7 +30,7 @@ function Novedades() {
               hidráulico para la sistematización de las parcelas y el uso
               eficiente del agua de riego. Flavio Sosa, uno de los técnicos de
               esta Agencia de Extensión Rural, detalló que el agua subterránea
-              se extrae con bombeo, haciendo uso de energías renovables (solar).
+              se extrae con bombeo, haciendo uso de energías renovables solar.
               “La perforación de uso eroga un caudal de 70 metros cúbicos por
               hora y permite un rendimiento efectivo de 6 horas diarias de
               funcionamiento”, describió el investigador.

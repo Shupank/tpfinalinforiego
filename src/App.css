@@ -1,33 +1,32 @@
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 .app {
-  min-height: 100vh;           /* Que la app ocupe toda la pantalla */
-  display: flex;
-  flex-direction: column;      /* Organizar navbar, contenido y footer en columna */
-}
-
-.content {
-  flex: 1; /* Que crezca para ocupar el espacio entre navbar y footer */
-  padding: 10px;
-  max-width: 1600px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column; /* Importante para que sus hijos puedan crecer */
-}
-
-.page-container {
-  flex: 1; /* Para que crezca dentro de .content */
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+.content {
+  flex: 1;
+  padding: 10px;
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
 
-
+.page-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
 
 .app > footer {
-  margin-top: auto;            /* Empuja el footer hacia abajo */
+  margin-top: auto;
 }

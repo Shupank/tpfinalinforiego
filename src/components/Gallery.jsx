@@ -1,41 +1,39 @@
-import React, { useState } from 'react';
-import Card from '../components/Card';
-import '../styles/Gallery.css';
+import React, { useState } from "react";
+import Card from "../components/Card";
+import "../styles/Gallery.css";
 
-import producto1 from '../assets/producto1.jpg';
-import producto2 from '../assets/producto2.jpg';
-import producto3 from '../assets/producto3.jpg';
+import producto1 from "../assets/producto1.jpg";
+import producto2 from "../assets/producto2.jpg";
+import producto3 from "../assets/producto3.jpg";
 
 const productos = [
   {
     imagen: producto1,
-    titulo: 'Enrollador',
-    descripcion: 'Ideal para campos deportivos.',
-    precio: '$120.000',
+    titulo: "Enrollador",
+    descripcion: "Ideal para campos deportivos.",
+    precio: "$9.200.000",
   },
   {
     imagen: producto2,
-    titulo: 'Filtros',
-    descripcion: 'Para evitar el taponamiento de los emisores.',
-    precio: '$25.000',
+    titulo: "Filtros",
+    descripcion: "Para evitar el taponamiento de los emisores.",
+    precio: "$250.000",
   },
   {
     imagen: producto3,
-    titulo: 'Avance frontal',
-    descripcion: 'Para el riego de grandes superficies.',
-    precio: '$310.000',
+    titulo: "Avance frontal",
+    descripcion: "Para el riego de grandes superficies.",
+    precio: "$31.000.000",
   },
 ];
 
 function Gallery() {
-  const [filtro, setFiltro] = useState('');
+  const [filtro, setFiltro] = useState("");
 
-  // Función para actualizar el filtro
   const handleFiltroChange = (e) => {
     setFiltro(e.target.value);
   };
 
-  // Filtrar productos que coincidan con el texto en titulo o descripción
   const productosFiltrados = productos.filter(
     (producto) =>
       producto.titulo.toLowerCase().includes(filtro.toLowerCase()) ||

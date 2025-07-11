@@ -1,12 +1,10 @@
 import React, { useState, useRef } from "react";
 import { sendForm } from "@emailjs/browser";
-import "../styles/Contacto.css"; // Asumiendo que tienes estilos relevantes aquí
+import "../styles/Contacto.css";
 
 function Contacto() {
-  // useRef para acceder directamente al elemento DOM del formulario, requerido por EmailJS.
   const form = useRef();
 
-  // Estado para manejar los datos del formulario.
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
@@ -14,17 +12,12 @@ function Contacto() {
     mensaje: "",
   });
 
-  // Estado para manejar el estado de envío (ej. cargando, éxito, error).
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // Estado para mensajes de retroalimentación al usuario (ej. "¡Enviado con éxito!").
+
   const [feedbackMessage, setFeedbackMessage] = useState("");
-  // Estado para el tipo de mensaje de retroalimentación (ej. "success", "error").
+
   const [messageType, setMessageType] = useState("");
 
-  /**
-   * Maneja los cambios en los campos del formulario, actualizando el estado `formData`.
-   * @param {Object} e - El objeto de evento de cambio del input.
-   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -33,53 +26,54 @@ function Contacto() {
     }));
   };
 
-  /**
-   * Restablece el formulario a su estado inicial vacío y borra cualquier mensaje de retroalimentación.
-   */
   const resetForm = () => {
     setFormData({ nombre: "", email: "", frecuencia: "", mensaje: "" });
     setFeedbackMessage("");
     setMessageType("");
   };
 
-  /**
-   * Maneja el envío del formulario.
-   * Realiza validación del lado del cliente y envía el correo electrónico a través de EmailJS.
-   * @param {Object} e - El objeto de evento de envío del formulario.
-   */
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Previene el comportamiento predeterminado de envío del formulario (recarga de página).
+    e.preventDefault();
 
-    // Validación básica del lado del cliente antes de enviar.
-    if (!formData.nombre || !formData.email || !formData.frecuencia || !formData.mensaje) {
+    if (
+      !formData.nombre ||
+      !formData.email ||
+      !formData.frecuencia ||
+      !formData.mensaje
+    ) {
       setFeedbackMessage("Por favor, completá todos los campos obligatorios.");
       setMessageType("error");
       return;
     }
 
-    setIsSubmitting(true); // Establece el estado de envío a true.
-    setFeedbackMessage(""); // Limpia mensajes anteriores.
+    setIsSubmitting(true);
+    setFeedbackMessage("");
     setMessageType("");
 
     try {
-      // Envía el formulario usando EmailJS.
       await sendForm(
-        "service_7xtj2ic", // Tu Service ID de EmailJS
-        "template_uw2hnj2", // Tu Template ID de EmailJS
-        form.current,      // Referencia al elemento DOM del formulario
-        "7H54-U2J-VOaxsWGH"// Tu Public Key de EmailJS
+        "service_7xtj2ic",
+        "template_uw2hnj2",
+        form.current,
+        "7H54-U2J-VOaxsWGH"
       );
 
-      setFeedbackMessage("¡Gracias por tu mensaje! Nos pondremos en contacto pronto. 😊");
+      setFeedbackMessage(
+        "¡Gracias por tu mensaje! Nos pondremos en contacto pronto. 😊"
+      );
       setMessageType("success");
-      resetForm(); // Limpia el formulario después de un envío exitoso.
 
+      setTimeout(() => {
+        resetForm();
+      }, 4000);
     } catch (error) {
-      console.error("Error al enviar el email:", error); // Registra el error completo para depuración.
-      setFeedbackMessage("Hubo un error al enviar tu mensaje. Por favor, intentá de nuevo más tarde.");
+      console.error("Error al enviar el email:", error);
+      setFeedbackMessage(
+        "Hubo un error al enviar tu mensaje. Por favor, intentá de nuevo más tarde."
+      );
       setMessageType("error");
     } finally {
-      setIsSubmitting(false); // Finaliza el estado de envío.
+      setIsSubmitting(false);
     }
   };
 
@@ -90,7 +84,11 @@ function Contacto() {
 
         {/* Mensajes de retroalimentación para el usuario */}
         {feedbackMessage && (
-          <div className={`form-message ${messageType === "success" ? "success" : "error"}`}>
+          <div
+            className={`form-message ${
+              messageType === "success" ? "success" : "error"
+            }`}
+          >
             {feedbackMessage}
           </div>
         )}
@@ -102,7 +100,7 @@ function Contacto() {
           value={formData.nombre}
           onChange={handleChange}
           required
-          aria-label="Nombre completo" // Mejora la accesibilidad
+          aria-label="Nombre completo"
         />
         <input
           type="email"
@@ -120,7 +118,10 @@ function Contacto() {
           required
           aria-label="Frecuencia de uso de riego"
         >
-          <option value="" disabled>¿Con qué frecuencia usás riego?</option> {/* Deshabilitado para que no sea una opción seleccionable */}
+          <option value="" disabled>
+            ¿Con qué frecuencia usás riego?
+          </option>{" "}
+          {/* Deshabilitado para que no sea una opción seleccionable */}
           <option value="nada">Nada</option>
           <option value="poco">Poco</option>
           <option value="mucho">Mucho</option>

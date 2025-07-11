@@ -28,11 +28,6 @@ html, body, #root {
 
 
 
-
-.app > *:not(footer) {
-  flex-shrink: 0;              /* Navbar y Routes no se achican */
-}
-
 .app > footer {
   margin-top: auto;            /* Empuja el footer hacia abajo */
 }

@@ -109,14 +109,6 @@ body.modal-open {
 .modal-overlay {
   opacity: 0;
   animation: fadeIn 0.3s forwards;
-  .modal-overlay {
-  border: 2px solid #a8d5ba; /* verde pastel */
-}
-
-.modal {
-  border: 2px solid #a8d5ba; /* verde pastel */
-}
-
 }
 
 @keyframes fadeIn {

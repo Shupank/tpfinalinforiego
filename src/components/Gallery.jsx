@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '../components/Card';
 import '../styles/Gallery.css';
 
@@ -9,7 +9,7 @@ import producto3 from '../assets/producto3.jpg';
 const productos = [
   {
     imagen: producto1,
-    titulo: 'Enrrollador',
+    titulo: 'Enrollador',
     descripcion: 'Ideal para campos deportivos.',
     precio: '$120.000',
   },
@@ -28,14 +28,37 @@ const productos = [
 ];
 
 function Gallery() {
-  console.log('Rendering Gallery with products:', productos); // Depuración
+  const [filtro, setFiltro] = useState('');
+
+  // Función para actualizar el filtro
+  const handleFiltroChange = (e) => {
+    setFiltro(e.target.value);
+  };
+
+  // Filtrar productos que coincidan con el texto en titulo o descripción
+  const productosFiltrados = productos.filter(
+    (producto) =>
+      producto.titulo.toLowerCase().includes(filtro.toLowerCase()) ||
+      producto.descripcion.toLowerCase().includes(filtro.toLowerCase())
+  );
+
   return (
     <section className="gallery">
       <h2>Productos</h2>
+
+      {/* Input para buscar */}
+      <input
+        type="text"
+        placeholder="Buscar productos..."
+        value={filtro}
+        onChange={handleFiltroChange}
+        className="input-busqueda"
+        aria-label="Buscar productos"
+      />
+
       <div className="product-grid">
-        {productos.map((producto, index) => {
-          console.log(`Rendering Card for: ${producto.titulo}`); // Depuración adicional
-          return (
+        {productosFiltrados.length > 0 ? (
+          productosFiltrados.map((producto, index) => (
             <Card
               key={index}
               imagen={producto.imagen}
@@ -43,8 +66,10 @@ function Gallery() {
               descripcion={producto.descripcion}
               precio={producto.precio}
             />
-          );
-        })}
+          ))
+        ) : (
+          <p>No se encontraron productos.</p>
+        )}
       </div>
     </section>
   );

@@ -17,3 +17,19 @@
     align-items: center;
   }
 }
+.input-busqueda {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px 12px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.input-busqueda:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}

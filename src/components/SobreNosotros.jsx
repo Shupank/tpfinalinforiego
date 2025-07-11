@@ -23,7 +23,8 @@ function SobreNosotros() {
         respetuosos con el medio ambiente.
       </p>
       <blockquote className="cita">
-        “La innovación en riego no es solo técnica, es compromiso con la vida.”
+        “La innovación en riego no es solo técnica, es compromiso con la vida.
+        ESE ES NUESTRO COMPROMISO PARA QUE TENGAS A TU ALCANCE TODA LA ACTUALIDAD.”
       </blockquote>
     </motion.section>
   );

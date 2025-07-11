@@ -1,21 +1,25 @@
 import React from "react";
-import publicidadImg from "../assets/publicidad.jpg"; // ← import correcta
+import publicidadImg from "../assets/publicidad.jpg";
+
 
 function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="ad-banner">
-        <a href="https://www.agronorte.com.ar"
-        target="_blank" // Opcional: Abre el link en una nueva pestaña
-          rel="noopener noreferrer" // Opcional pero recomendado para seguridad con target="_blank"
+        <a
+          href="https://www.agronorte.com.ar"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <img src={publicidadImg} alt="Banner Publicitario - ¡Haz clic aquí!" />
-</a>
-
+          <img
+            src={publicidadImg}
+            alt="Banner Publicitario - ¡Haz clic aquí!"
+          />
+        </a>
       </div>
+      
     </aside>
   );
 }
 
 export default Sidebar;
-

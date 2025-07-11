@@ -1,9 +1,9 @@
-// src/pages/Home.js
+
 import React from "react";
 import Hero from "../components/Hero";
 import SobreNosotros from "../components/SobreNosotros";
 import Articulo from "../components/Articulo";
-import Sidebar from "../components/Sidebar"; // Este es tu componente de publicidad
+import Sidebar from "../components/Sidebar"; 
 import "../styles/Home.css";
 import "../styles/Sidebar.css";
 

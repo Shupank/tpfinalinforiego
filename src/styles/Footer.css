@@ -13,3 +13,7 @@
   margin: 0;
   letter-spacing: 0.5px;
 }
+
+.app > footer {
+  margin-top: auto;            /* Empuja el footer hacia abajo */
+}

@@ -1,32 +1,30 @@
+// src/App.jsx
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
 
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// Componentes
+import Navbar from './components/Navbar';
+import Login from './components/Login';
+import Register from './components/Register';
+import Products from './pages/Products';
+import ProductForm from './components/ProductForm';
+import AdminPanel from './components/AdminPanel';
 
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+function PrivateRoute({ children }) {
+  const { user, loading } = useAuth();
+  if (loading) return <div className="text-center mt-20 text-xl">Cargando...</div>;
+  return user ? children : <Navigate to="/login" />;
+}
 
-import Home from "./pages/Home";
-import Novedades from "./pages/Novedades";
-import Productos from "./pages/Productos";
-import Contacto from "./pages/Contacto";
+function AdminRoute({ children }) {
+  const { user, loading } = useAuth();
+  if (loading) return <div className="text-center mt-20 text-xl">Cargando...</div>;
+  return user && user.role === 'admin' ? children : <Navigate to="/products" />;
+}
 
 function App() {
   return (
-    <Router>
-      <div className="app">
+    <AuthProvider>
+      <BrowserRouter>
         <Navbar />
-        
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/novedades" element={<Novedades />} />
-          <Route path="/productos" element={<Productos />} />
-          <Route path="/contacto" element={<Contacto />} />
-        </Routes>
-        
-        <Footer />
-      </div>
-    </Router>
-  );
-}
-
-export default App;
+        <div className="min-h
